@@ -41,6 +41,9 @@ CACHES = {
     }
 }
 
+ALLOWED_HOSTS = ['*']
+
+
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
 MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]

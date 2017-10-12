@@ -23,6 +23,9 @@ from django.core.wsgi import get_wsgi_application
 app_path = os.path.dirname(os.path.abspath(__file__)).replace('/config', '')
 sys.path.append(os.path.join(app_path, 'myaccounts'))
 
+config_setting = os.environ.get('DJANGO_SETTINGS_MODULE')
+print ("Config setting", config_setting)
+
 if os.environ.get('DJANGO_SETTINGS_MODULE') == 'config.settings.production':
     from raven.contrib.django.raven_compat.middleware.wsgi import Sentry
 

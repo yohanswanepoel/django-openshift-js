@@ -17,6 +17,7 @@ Production Configurations
 import logging
 
 
+
 from .base import *  # noqa
 
 # SECRET CONFIGURATION
@@ -68,8 +69,9 @@ X_FRAME_OPTIONS = 'DENY'
 # ------------------------------------------------------------------------------
 # Hosts/domain names that are valid for this site
 # See https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['example.com', ])
-# END SITE CONFIGURATION
+ALLOWED_HOSTS = ['*']
+
+    # END SITE CONFIGURATION
 
 INSTALLED_APPS += ['gunicorn', ]
 

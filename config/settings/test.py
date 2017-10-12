@@ -19,6 +19,9 @@ TEMPLATES[0]['OPTIONS']['debug'] = False
 # Note: This key only used for development and testing.
 SECRET_KEY = env('DJANGO_SECRET_KEY', default='CHANGEME!!!')
 
+ALLOWED_HOSTS = ['*']
+
+
 # Mail settings
 # ------------------------------------------------------------------------------
 EMAIL_HOST = 'localhost'
