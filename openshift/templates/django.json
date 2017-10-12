@@ -10,8 +10,8 @@
       "iconClass": "icon-python",
       "template.openshift.io/long-description": "This template defines resources needed to develop a Django based application, including a build configuration and application deployment configuration.  It does not include a database.",
       "template.openshift.io/provider-display-name": "Johan",
-      "template.openshift.io/documentation-url": "https://github.com/openshift/django-ex",
-      "template.openshift.io/support-url": "https://access.redhat.com"
+      "template.openshift.io/documentation-url": "https://github.com/yohanswanepoel/django-openshift-js",
+      "template.openshift.io/support-url": "https://github.com/yohanswanepoel/django-openshift-js"
     }
   },
   "labels": {
@@ -109,6 +109,10 @@
               {
                   "name": "PIP_INDEX_URL",
                   "value": "${PIP_INDEX_URL}"
+              },
+              {
+                "name": "DJANGO_SETTINGS_MODULE",
+                "value": "${DJANGO_SETTINGS_MODULE}"
               }
             ]
           }
@@ -220,6 +224,10 @@
                         "key" : "django-secret-key"
                       }
                     }
+                  },
+                  {
+                    "name": "DJANGO_SETTINGS_MODULE",
+                    "value": "${DJANGO_SETTINGS_MODULE}"
                   }
                 ],
                 "resources": {
@@ -240,7 +248,7 @@
       "displayName": "Name",
       "description": "The name assigned to all of the frontend objects defined in this template.",
       "required": true,
-      "value": "django-example"
+      "value": "django-johan"
     },
     {
       "name": "NAMESPACE",
@@ -261,7 +269,7 @@
       "displayName": "Git Repository URL",
       "required": true,
       "description": "The URL of the repository with your application source code.",
-      "value": "https://github.com/openshift/django-ex.git"
+      "value": "https://github.com/yohanswanepoel/django-openshift-js.git"
     },
     {
       "name": "SOURCE_REPOSITORY_REF",
@@ -290,6 +298,13 @@
       "name": "APP_CONFIG",
       "displayName": "Application Configuration File Path",
       "description": "Relative path to Gunicorn configuration file (optional)."
+      "value": "config/wsgi.py"
+    },
+    {
+      "name": "DJANGO_SETTINGS_MODULE",
+      "displayName": "Django settings module ",
+      "description": "Django settings module local, test, prod (optional)"
+      "value": "config.settings.local"
     },
     {
       "name": "DJANGO_SECRET_KEY",
