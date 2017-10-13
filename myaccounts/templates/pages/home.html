@@ -15,10 +15,7 @@
       <input type="text" v-model="input"></input>
       <input type="text" v-model="message"></input>
       <ul class="list-group">
-        <li class="list-group-item list-group-item-action">
-          TEST
-        </li>
-        <li v-for="gl in groceryList" class="list-group-item list-group-item-action">
+         <li v-for="gl in groceryList" class="list-group-item list-group-item-action">
           [[ gl.text ]]
         </li>
       </ul>
@@ -30,11 +27,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>0</td>
-            <td>Test</td>
-          </tr>
-          <tr class="table-info" v-for="gl in groceryList">
+          <tr class="table-info" v-for="gl in groceryList">
             <td>[[ gl.id ]]</td>
             <td>[[ gl.text ]]</td>
           </tr>
