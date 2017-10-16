@@ -16,6 +16,9 @@ urlpatterns = [
     url(r'^users/', include('myaccounts.users.urls', namespace='users')),
     url(r'^accounts/', include('allauth.urls')),
 
+    # Logged In
+    url(r'^myaccounts/', include('myaccounts.accounts.urls', namespace='myaccounts')),
+
     # Your stuff: custom urls includes go here
 
 

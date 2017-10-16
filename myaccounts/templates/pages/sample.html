@@ -5,12 +5,11 @@
 
 {% block content %}
 <div id="app" class="container">
-      <button v-on:click="changeValue" class="btn">Changes</button>
+      <button v-on:click="changeValue" class="btn">Change</button>
       <button v-on:click="resetValue" class="btn">Reset</button>
       <button v-on:click="addToList" class="btn">Add Item</button>
       <button v-on:click="removeItem" class="btn">Remove Item</button>
       <br>
-      Some More stuff
       [[ message ]]
       <br>
       <input type="text" v-model="input"></input>

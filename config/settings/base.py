@@ -55,6 +55,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     # custom users app
     'myaccounts.users.apps.UsersConfig',
+    'myaccounts.accounts',
     # Your stuff: custom apps go here
 ]
 
