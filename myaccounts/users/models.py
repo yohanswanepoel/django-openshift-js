@@ -17,3 +17,7 @@ class User(AbstractUser):
 
     def get_absolute_url(self):
         return reverse('users:detail', kwargs={'username': self.username})
+
+class Preferences(models.Model):
+    notifications = models.BooleanField(default=False)
+    user = models.ForeignKey(User, on_delete=None, null=False, verbose_name=_("Owner"), related_name='%(class)s_owner')
