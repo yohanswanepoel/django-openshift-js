@@ -7,6 +7,6 @@ from . import views
 from . import views_api
 
 urlpatterns = [
-    url(r'^$', views.AccountsMainView.as_view(), name='accounts_home'),
+    url(r'^$', views.AccountsMainView.as_view(), name='home'),
     url(r'^api/account_list/(?P<user_id>[0-9a-f-]+)/$', views_api.get_accounts, name='account_list_api')
 ]
