@@ -7,7 +7,7 @@ https://docs.djangoproject.com/en/dev/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
-import environ
+import environ, os
 
 ROOT_DIR = environ.Path(__file__) - 3  # (myaccounts/config/settings/base.py - 3 = myaccounts/)
 APPS_DIR = ROOT_DIR.path('myaccounts')
