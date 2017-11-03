@@ -165,7 +165,7 @@
             "imageChangeParams": {
               "automatic": true,
               "containerNames": [
-                "django-psql-example"
+                "django-johan-example"
               ],
               "from": {
                 "kind": "ImageStreamTag",
