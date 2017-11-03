@@ -10,7 +10,7 @@ from .base import *  # noqa
 # DEBUG
 # ------------------------------------------------------------------------------
 # Turn debug off so tests run faster
-DEBUG = env.bool('DJANGO_DEBUG', default=True)
+DEBUG = env.bool('DJANGO_DEBUG', default=False)
 TEMPLATES[0]['OPTIONS']['debug'] = False
 
 # SECRET CONFIGURATION
