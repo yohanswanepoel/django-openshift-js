@@ -10,6 +10,8 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 import environ
 import os
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 ROOT_DIR = environ.Path(__file__) - 3  # (myaccounts/config/settings/base.py - 3 = myaccounts/)
 APPS_DIR = ROOT_DIR.path('myaccounts')
 
