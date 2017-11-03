@@ -16,7 +16,7 @@
   },
   "message": "The following service(s) have been created in your project: ${NAME}, ${DATABASE_SERVICE_NAME}.\n\nFor more information about using this template, including OpenShift considerations, see https://github.com/openshift/django-ex/blob/master/README.md.",
   "labels": {
-    "template": "django-psql-example"
+    "template": "django-psql-example-js"
   },
   "objects": [
     {
@@ -112,6 +112,10 @@
               {
                   "name": "PIP_INDEX_URL",
                   "value": "${PIP_INDEX_URL}"
+              },
+              {
+                "name": "DJANGO_SETTINGS_MODULE",
+                "value": "${DJANGO_SETTINGS_MODULE}"
               }
             ]
           }
@@ -253,6 +257,10 @@
                         "key" : "django-secret-key"
                       }
                     }
+                  },
+                  {
+                    "name": "DJANGO_SETTINGS_MODULE",
+                    "value": "${DJANGO_SETTINGS_MODULE}"
                   }
                 ],
                 "resources": {
@@ -438,7 +446,7 @@
       "displayName": "Git Repository URL",
       "required": true,
       "description": "The URL of the repository with your application source code.",
-      "value": "https://github.com/openshift/django-ex.git"
+      "value": "https://github.com/yohanswanepoel/django-openshift-js.git"
     },
     {
       "name": "SOURCE_REPOSITORY_REF",
@@ -503,7 +511,7 @@
       "name": "DJANGO_SETTINGS_MODULE",
       "displayName": "Django settings module ",
       "description": "Django settings module local, test, prod (optional)",
-      "value": "config.settings.local"
+      "value": "config.settings.test"
     },
     {
       "name": "DJANGO_SECRET_KEY",
