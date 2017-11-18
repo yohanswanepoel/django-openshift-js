@@ -191,7 +191,7 @@
           "spec": {
             "containers": [
               {
-                "name": "django-js-persistent",
+                "name": "django-johan-persistent",
                 "image": " ",
                 "ports": [
                   {

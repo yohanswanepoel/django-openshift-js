@@ -191,7 +191,7 @@
           "spec": {
             "containers": [
               {
-                "name": "django-psql-example",
+                "name": "django-johan-example",
                 "image": " ",
                 "ports": [
                   {
