@@ -191,7 +191,7 @@
           "spec": {
             "containers": [
               {
-                "name": "django-psql-persistent",
+                "name": "django-js-persistent",
                 "image": " ",
                 "ports": [
                   {
