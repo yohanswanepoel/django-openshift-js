@@ -202,7 +202,7 @@
                   "timeoutSeconds": 3,
                   "initialDelaySeconds": 3,
                   "httpGet": {
-                    "path": "/health",
+                    "path": "/",
                     "port": 8080
                   }
                 },
@@ -210,7 +210,7 @@
                   "timeoutSeconds": 3,
                   "initialDelaySeconds": 30,
                   "httpGet": {
-                    "path": "/health",
+                    "path": "/",
                     "port": 8080
                   }
                 },
@@ -437,7 +437,7 @@
       "displayName": "Name",
       "description": "The name assigned to all of the frontend objects defined in this template.",
       "required": true,
-      "value": "django-psql-persistent"
+      "value": "django-js-persistent"
     },
     {
       "name": "NAMESPACE",
@@ -451,14 +451,14 @@
       "displayName": "Memory Limit",
       "required": true,
       "description": "Maximum amount of memory the Django container can use.",
-      "value": "512Mi"
+      "value": "256Mi"
     },
     {
       "name": "MEMORY_POSTGRESQL_LIMIT",
       "displayName": "Memory Limit (PostgreSQL)",
       "required": true,
       "description": "Maximum amount of memory the PostgreSQL container can use.",
-      "value": "512Mi"
+      "value": "256Mi"
     },
     {
       "name": "VOLUME_CAPACITY",

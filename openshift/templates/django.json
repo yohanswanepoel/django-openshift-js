@@ -262,7 +262,7 @@
       "displayName": "Memory Limit",
       "required": true,
       "description": "Maximum amount of memory the container can use.",
-      "value": "512Mi"
+      "value": "256Mi"
     },
     {
       "name": "SOURCE_REPOSITORY_URL",
