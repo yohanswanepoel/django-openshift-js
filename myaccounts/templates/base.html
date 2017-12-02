@@ -21,6 +21,8 @@
     <!-- Your stuff: Third-party CSS libraries go here -->
 
     <!-- This file stores project-specific CSS -->
+    <link href="{% static 'font-awesome/css/font-awesome.css' %}" rel="stylesheet">
+
     <link href="{% static 'css/project.css' %}" rel="stylesheet">
 
     {% endblock %}
@@ -41,28 +43,40 @@
             <li class="nav-item active">
               <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+
+            {% if not request.user.is_authenticated %}
+                <li class="nav-item">
               <a class="nav-link" href="{% url 'about' %}">About</a>
+              </li>
+            <li class="nav-item">
+                {# URL provided by django-allauth/account/urls.py #}
+                <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}"><i class="fa fa-user-plus"></i> {% trans "Sign Up" %}</a>
+              </li>
+
+            {% endif %}
+            <li class="nav-item">
+                {# URL provided by django-allauth/account/urls.py #}
+                <a class="nav-link" href="{% url 'home' %}"><i class="fa fa-envelope-o"></i> {% trans "Contact Us" %}</a>
             </li>
+
             {% if request.user.is_authenticated %}
               <li class="nav-item">
                 {# URL provided by django-allauth/account/urls.py #}
-                <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a>
+                <a class="nav-link" href="{% url 'users:detail' request.user.username  %}"><i class="fa fa-cog"></i> {% trans "Settings" %}</a>
               </li>
               <li class="nav-item">
                 {# URL provided by django-allauth/account/urls.py #}
-                <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>
+                <a class="nav-link" href="{% url 'account_logout' %}"><i class="fa fa-sign-out"></i> {% trans "Sign Out" %}</a>
               </li>
+
             {% else %}
               <li class="nav-item">
                 {# URL provided by django-allauth/account/urls.py #}
-                <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
+                <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}"><i class="fa fa-sign-in"> {% trans "Sign In" %}</i></a>
               </li>
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
-              </li>
+
             {% endif %}
+
           </ul>
         </div>
       </nav>
