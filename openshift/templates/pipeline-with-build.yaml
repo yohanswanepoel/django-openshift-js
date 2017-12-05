@@ -1,0 +1,77 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  annotations:
+    pipeline.alpha.openshift.io/uses: '[{"name": "${NAME}", "namespace": "", "kind": "DeploymentConfig"}]'
+  creationTimestamp: '2017-12-05T00:42:37Z'
+  labels:
+    name: pipeline-with-build
+  name: Pipeline with Build
+  namespace: ${NAME_SPACE}
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: {}
+  output: {}
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    type: None
+  strategy:
+    jenkinsPipelineStrategy:
+      jenkinsfile: |-
+        try {
+          timeout(time: 20, unit: 'MINUTES') {
+              node{
+                stage('build') {
+                  openshiftBuild( buildConfig: 'django-johan', showBuildLogs: 'true')
+                }
+                stage('deploy build') {
+                  openshiftDeploy(deploymentConfig: 'django-johan')
+                }
+                stage('test build'){
+                    openshiftVerifyDeployment( deploymentConfig: 'django-johan')
+                }
+                stage('deploy dev test'){
+                    def STAGE_PROJECT = "${TEST_SPACE}"
+                    def BUILD_PROJECT = "${NAME_SPACE}"
+                    def BUILD_NAME = "django-johan"
+                    def version = "latest"
+                    sh "oc tag ${BUILD_PROJECT}/${BUILD_NAME}:latest ${STAGE_PROJECT}/${BUILD_NAME}:${version}"
+                    sh "oc delete bc,dc,svc,route -l app=${BUILD_NAME} -n ${STAGE_PROJECT}"
+                    sh "oc new-app ${BUILD_NAME}:${version} -n ${STAGE_PROJECT}"
+                    sh "oc expose svc/${BUILD_NAME} -n ${STAGE_PROJECT}"
+                }
+                stage('Human Validation and Stage'){
+                    timeout(time:15, unit:'MINUTES') {
+                        input message: "Promote to STAGE?", ok: "Promote"
+                     }
+                    def STAGE_PROJECT = "${PROD_SPACE}"
+                    def BUILD_PROJECT = "${NAME_SPACE}"
+                    def BUILD_NAME = "django-johan"
+                    def version = "latest"
+                    sh "oc tag ${BUILD_PROJECT}/${BUILD_NAME}:latest ${STAGE_PROJECT}/${BUILD_NAME}:${version}"
+                    sh "oc delete bc,dc,svc,route -l app=${BUILD_NAME} -n ${STAGE_PROJECT}"
+                    sh "oc new-app ${BUILD_NAME}:${version} -n ${STAGE_PROJECT}"
+                    sh "oc expose svc/${BUILD_NAME} -n ${STAGE_PROJECT}"
+                }
+              }
+         }
+      } catch (err) {
+         echo "in catch block"
+         echo "Caught: ${err}"
+         currentBuild.result = 'FAILURE'
+         throw err
+      }
+    type: JenkinsPipeline
+  successfulBuildsHistoryLimit: 5
+  triggers: []
+parameters:
+  - description: Project name
+    name: NAME_SPACE
+  - description: Test namespace
+    name: TEST_SPACE
+  - description: Production namespace
+    name: PROD_SPACE
+status:
+  lastVersion: 28
