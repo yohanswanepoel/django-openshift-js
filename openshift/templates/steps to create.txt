@@ -1,4 +1,4 @@
-oc login -u johan
+oc login -u [your user]
 # Create the djbuild space
 oc new-project djbuild
 oc new-app https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/master/openshift/templates/django.json
