@@ -1,0 +1,18 @@
+oc login -u johan
+# Create the djbuild space
+oc new-project djbuild
+oc new-app https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/master/openshift/templates/django.json
+
+# Add variables
+echo NAME_SPACE=djbuild >>  project.env
+echo TEST_SPACE=djdev >>  project.env
+echo PROD_SPACE=djstage >>  project.env
+ project.env
+# Add the build files
+curl https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/master/openshift/templates/pipeline-no-build.yaml > pipeline-no-build.yaml
+
+sed -i 's/VAL_NAME_SPACE/djbuild/g' pipeline-no-build.yaml
+sed -i 's/VAL_TEST_SPACE/djtest/g' pipeline-no-build.yaml
+sed -i 's/VAL_PROD_SPACE/djprod/g' pipeline-no-build.yaml
+
+oc create -f pipeline-no-build.yaml
