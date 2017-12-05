@@ -8,7 +8,7 @@ oc new-app https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/
 oc new-app jenkins-ephemeral
 
 # Add the build files
-curl https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/master/openshift/templates/pipeline-no-build.yaml > pipeline-no-build.yaml
+curl -H 'Cache-Control: no-cache'  https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/master/openshift/templates/pipeline-no-build.yaml > pipeline-no-build.yaml
 
 sed -i 's/VAL_NAME_SPACE/djbuild/g' pipeline-no-build.yaml
 sed -i 's/VAL_TEST_SPACE/djtest/g' pipeline-no-build.yaml
@@ -16,7 +16,7 @@ sed -i 's/VAL_PROD_SPACE/djprod/g' pipeline-no-build.yaml
 
 oc create -f pipeline-no-build.yaml
 
-curl https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/master/openshift/templates/pipeline-with-build.yaml > pipeline-with-build.yaml
+curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/master/openshift/templates/pipeline-with-build.yaml > pipeline-with-build.yaml
 
 sed -i 's/VAL_NAME_SPACE/djbuild/g' pipeline-with-build.yaml
 sed -i 's/VAL_TEST_SPACE/djtest/g' pipeline-with-build.yaml
@@ -25,7 +25,7 @@ sed -i 's/VAL_PROD_SPACE/djprod/g' pipeline-with-build.yaml
 oc create -f pipeline-with-build.yaml
 
 #Security
-curl https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/master/openshift/templates/jenkins_edit.yaml > jenkins_edit.yaml
+curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/master/openshift/templates/jenkins_edit.yaml > jenkins_edit.yaml
 sed -i 's/BUILD_NAME_SPACE/djbuild/g' jenkins_edit.yaml
 sed -i 's/VAL_NAME_SPACE/djbuild/g' jenkins_edit.yaml
 
@@ -33,15 +33,21 @@ oc create -f jenkins_edit.yaml
 
 # create new projects
 oc new-project djtest
-curl https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/master/openshift/templates/jenkins_edit.yaml > jenkins_edit.yaml
+curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/master/openshift/templates/jenkins_edit.yaml > jenkins_edit.yaml
 sed -i 's/BUILD_NAME_SPACE/djbuild/g' jenkins_edit.yaml
 sed -i 's/VAL_NAME_SPACE/djtest/g' jenkins_edit.yaml
 
 oc create -f jenkins_edit.yaml
 
 oc new-project djprod
-curl https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/master/openshift/templates/jenkins_edit.yaml > jenkins_edit.yaml
+curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/master/openshift/templates/jenkins_edit.yaml > jenkins_edit.yaml
 sed -i 's/BUILD_NAME_SPACE/djbuild/g' jenkins_edit.yaml
 sed -i 's/VAL_NAME_SPACE/djprod/g' jenkins_edit.yaml
 
 oc create -f jenkins_edit.yaml
+
+
+# Steps to clean
+oc delete project djprod
+oc delete project djtest
+oc delete project djbuild
