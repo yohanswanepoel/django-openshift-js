@@ -5,8 +5,8 @@ metadata:
     pipeline.alpha.openshift.io/uses: '[{"name": "${NAME}", "namespace": "", "kind": "DeploymentConfig"}]'
   creationTimestamp: '2017-12-05T00:42:37Z'
   labels:
-    name: pipeline-with-build
-  name: Pipeline with Build
+    name: Pipeline with Build
+  name: pipeline-with-build
   namespace: VAL_NAME_SPACE
 spec:
   failedBuildsHistoryLimit: 5
