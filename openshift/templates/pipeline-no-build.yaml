@@ -24,8 +24,8 @@ spec:
             timeout(time: 20, unit: 'MINUTES') {
                 node{
                   stage('deploy dev test'){
-                      def STAGE_PROJECT = "${TEST_SPACE}"
-                      def BUILD_PROJECT = "${NAME_SPACE}"
+                      def STAGE_PROJECT = "${VAL_TEST_SPACE}"
+                      def BUILD_PROJECT = "${VAL_NAME_SPACE}"
                       def BUILD_NAME = "django-johan"
                       def version = "latest"
                       sh "oc tag ${BUILD_PROJECT}/${BUILD_NAME}:latest ${STAGE_PROJECT}/${BUILD_NAME}:${version}"
@@ -37,8 +37,8 @@ spec:
                       timeout(time:15, unit:'MINUTES') {
                           input message: "Promote to STAGE?", ok: "Promote"
                        }
-                      def STAGE_PROJECT = "${PROD_SPACE}"
-                      def BUILD_PROJECT = "${NAME_SPACE}"
+                      def STAGE_PROJECT = "${VAL_PROD_SPACE}"
+                      def BUILD_PROJECT = "${VAL_NAME_SPACE}"
                       def BUILD_NAME = "django-johan"
                       def version = "latest"
                       sh "oc tag ${BUILD_PROJECT}/${BUILD_NAME}:latest ${STAGE_PROJECT}/${BUILD_NAME}:${version}"
