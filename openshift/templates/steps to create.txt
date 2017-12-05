@@ -3,11 +3,10 @@ oc login -u johan
 oc new-project djbuild
 oc new-app https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/master/openshift/templates/django.json
 
-# Add variables
-echo NAME_SPACE=djbuild >>  project.env
-echo TEST_SPACE=djdev >>  project.env
-echo PROD_SPACE=djstage >>  project.env
- project.env
+
+# Deploy jenkins
+
+
 # Add the build files
 curl https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/master/openshift/templates/pipeline-no-build.yaml > pipeline-no-build.yaml
 
@@ -16,3 +15,11 @@ sed -i 's/VAL_TEST_SPACE/djtest/g' pipeline-no-build.yaml
 sed -i 's/VAL_PROD_SPACE/djprod/g' pipeline-no-build.yaml
 
 oc create -f pipeline-no-build.yaml
+
+curl https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/master/openshift/templates/pipeline-with-build.yaml > pipeline-no-build.yaml
+
+sed -i 's/VAL_NAME_SPACE/djbuild/g' pipeline-with-build.yaml
+sed -i 's/VAL_TEST_SPACE/djtest/g' pipeline-with-build.yaml
+sed -i 's/VAL_PROD_SPACE/djprod/g' pipeline-with-build.yaml
+
+oc create -f pipeline-with-build.yaml
