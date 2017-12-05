@@ -74,4 +74,4 @@ parameters:
   - description: Production namespace
     name: PROD_SPACE
 status:
-  lastVersion: 28
+  lastVersion: 2
