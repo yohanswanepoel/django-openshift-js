@@ -60,9 +60,12 @@ spec:
 parameters:
   - description: Project name
     name: NAME_SPACE
+    value: VAL_NAME_SPACE
   - description: Test namespace
     name: TEST_SPACE
+    value: VAL_TEST_SPACE
   - description: Production namespace
     name: PROD_SPACE
+    value: VAL_PROD_SPACE
 status:
   lastVersion: 2
