@@ -116,6 +116,10 @@
               {
                 "name": "DJANGO_SETTINGS_MODULE",
                 "value": "${DJANGO_SETTINGS_MODULE}"
+              },
+              {
+                "name": "PIP_TRUSTED_HOST",
+                "value": "${PIP_TRUSTED_HOST}"
               }
             ]
           }
@@ -550,6 +554,12 @@
       "name": "PIP_INDEX_URL",
       "displayName": "Custom PyPi Index URL",
       "description": "The custom PyPi index URL",
+      "value": ""
+    },
+    {
+      "name": "PIP_TRUSTED_HOST",
+      "displayName": "Trusted host for Index",
+      "description": "Trusted host for Index",
       "value": ""
     }
   ]
