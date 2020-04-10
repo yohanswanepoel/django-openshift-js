@@ -143,6 +143,12 @@
             "github": {
               "secret": "${GITHUB_WEBHOOK_SECRET}"
             }
+          },
+          {
+            "type": "Generic",
+            "github": {
+              "secret": "${GENERIC_WEBHOOK_SECRET}"
+            }
           }
         ],
         "postCommit": {
@@ -473,6 +479,13 @@
       "name": "GITHUB_WEBHOOK_SECRET",
       "displayName": "GitHub Webhook Secret",
       "description": "Github trigger secret.  A difficult to guess string encoded as part of the webhook URL.  Not encrypted.",
+      "generate": "expression",
+      "from": "[a-zA-Z0-9]{40}"
+    },
+    {
+      "name": "GENERIC_WEBHOOK_SECRET",
+      "displayName": "Generic Webhook Secret",
+      "description": "Generic trigger secret.  A difficult to guess string encoded as part of the webhook URL.  Not encrypted.",
       "generate": "expression",
       "from": "[a-zA-Z0-9]{40}"
     },
