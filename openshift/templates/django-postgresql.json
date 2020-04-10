@@ -146,7 +146,7 @@
           },
           {
             "type": "Generic",
-            "github": {
+            "generic": {
               "secret": "${GENERIC_WEBHOOK_SECRET}"
             }
           }
