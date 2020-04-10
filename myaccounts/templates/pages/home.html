@@ -4,8 +4,41 @@
 
 
 {% block content %}
+  <div class="card-columns">
+    <div class="card bg-light" style="padding:20px">
+      <div class="card-body">
+        <h4 class="card-title">Machine</h4>
+        <p class="card-text">{{ machine }}</p>
+      </div>
+    </div>
+    <div class="card" style="padding:20px">
+      <div class="card-body">
+        <h4 class="card-title">Node</h4>
+        <p class="card-text">{{ node }}</p>
+      </div>
+    </div>
+    <div class="card" style="padding:20px">
+      <div class="card-body">
+        <h4 class="card-title">System</h4>
+        <p class="card-text">{{ system }}</p>
+      </div>
+    </div>
+    <div class="card" style="padding:20px">
+      <div class="card-body">
+        <h4 class="card-title">Release</h4>
+        <p class="card-text">{{ release }}</p>
+      </div>
+    </div>
+    <div class="card" style="padding:20px">
+      <div class="card-body">
+        <h4 class="card-title">Platform</h4>
+        <p class="card-text">{{ platform }}</p>
+      </div>
+    </div>
+</div>
 
-  Welcome
+
+  
 
 {% endblock content %}
 

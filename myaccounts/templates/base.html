@@ -31,59 +31,61 @@
 
   <body>
 
+    <div class="jumbotron text-center" style="margin-bottom:0">
+      <h2>OpenShift Multiplatform App</h2>
+    </div>
 
-      <nav class="navbar navbar-toggleable-md  navbar-inverse bg-primary">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="{% url 'myaccounts:home' %}">My Demo App</a>
+    <nav class="navbar navbar-toggleable-md  navbar-inverse bg-primary">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+          </li>
+
+          {% if not request.user.is_authenticated %}
+              <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}">About V2</a>
+            </li>
+          <li class="nav-item">
+              {# URL provided by django-allauth/account/urls.py #}
+              <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}"><i class="fa fa-user-plus"></i> {% trans "Sign Up" %}</a>
             </li>
 
-            {% if not request.user.is_authenticated %}
-                <li class="nav-item">
-              <a class="nav-link" href="{% url 'about' %}">About V2</a>
-              </li>
-            <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}"><i class="fa fa-user-plus"></i> {% trans "Sign Up" %}</a>
-              </li>
+          {% endif %}
+          <li class="nav-item">
+              {# URL provided by django-allauth/account/urls.py #}
+              <a class="nav-link" href="{% url 'home' %}"><i class="fa fa-envelope-o"></i> {% trans "Contact Us" %}</a>
+          </li>
 
-            {% endif %}
+          {% if request.user.is_authenticated %}
             <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a class="nav-link" href="{% url 'home' %}"><i class="fa fa-envelope-o"></i> {% trans "Contact Us" %}</a>
+              {# URL provided by django-allauth/account/urls.py #}
+              <a class="nav-link" href="{% url 'users:detail' request.user.username  %}"><i class="fa fa-cog"></i> {% trans "Settings" %}</a>
+            </li>
+            <li class="nav-item">
+              {# URL provided by django-allauth/account/urls.py #}
+              <a class="nav-link" href="{% url 'account_logout' %}"><i class="fa fa-sign-out"></i> {% trans "Sign Out" %}</a>
             </li>
 
-            {% if request.user.is_authenticated %}
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a class="nav-link" href="{% url 'users:detail' request.user.username  %}"><i class="fa fa-cog"></i> {% trans "Settings" %}</a>
-              </li>
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a class="nav-link" href="{% url 'account_logout' %}"><i class="fa fa-sign-out"></i> {% trans "Sign Out" %}</a>
-              </li>
+          {% else %}
+            <li class="nav-item">
+              {# URL provided by django-allauth/account/urls.py #}
+              <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}"><i class="fa fa-sign-in"> {% trans "Sign In" %}</i></a>
+            </li>
 
-            {% else %}
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}"><i class="fa fa-sign-in"> {% trans "Sign In" %}</i></a>
-              </li>
+          {% endif %}
 
-            {% endif %}
-
-          </ul>
-        </div>
-      </nav>
+        </ul>
+      </div>
+    </nav> 
 
 
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top:20px">
 
       {% if messages %}
           {% for message in messages %}
