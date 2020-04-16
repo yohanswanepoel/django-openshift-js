@@ -164,9 +164,11 @@
         "name": "${NAME}",
         "annotations": {
           "description": "Defines how to deploy the application server",
-          "template.alpha.openshift.io/wait-for-ready": "true",
-          "app.openshift.io/component": "frontend",
-          "app.openshift.io/runtime": "python"
+          "template.alpha.openshift.io/wait-for-ready": "true"
+        },
+        "labels":{
+            "app.openshift.io/component": "frontend",
+            "app.openshift.io/runtime": "python"
         }
       },
       "spec": {
