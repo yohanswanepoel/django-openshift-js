@@ -324,6 +324,11 @@
            "app.openshift.io/connects-to": "${NAME}",
            "app.openshift.io/component": "database",
            "app.openshift.io/name": "postgresql"
+        },
+        "labels":{
+            "app.openshift.io/name": "postgresql",
+            "app.openshift.io/component": "database",
+            "app.openshift.io/runtime": "postgresql"
         }
       },
       "spec": {
