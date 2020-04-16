@@ -292,7 +292,8 @@
       "metadata": {
         "name": "${DATABASE_SERVICE_NAME}",
         "annotations": {
-          "description": "Exposes the database server"
+          "description": "Exposes the database server",
+          "app.openshift.io/connects-to": "${NAME}"
         }
       },
       "spec": {
