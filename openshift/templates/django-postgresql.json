@@ -164,7 +164,9 @@
         "name": "${NAME}",
         "annotations": {
           "description": "Defines how to deploy the application server",
-          "template.alpha.openshift.io/wait-for-ready": "true"
+          "template.alpha.openshift.io/wait-for-ready": "true",
+          "app.openshift.io/component": "frontend",
+          "app.openshift.io/runtime": "python"
         }
       },
       "spec": {
@@ -316,7 +318,10 @@
         "name": "${DATABASE_SERVICE_NAME}",
         "annotations": {
           "description": "Defines how to deploy the database",
-          "template.alpha.openshift.io/wait-for-ready": "true"
+          "template.alpha.openshift.io/wait-for-ready": "true",
+           "app.openshift.io/connects-to": "${NAME}",
+           "app.openshift.io/component": "database",
+           "app.openshift.io/name": "postgresql"
         }
       },
       "spec": {
