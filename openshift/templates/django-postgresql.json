@@ -326,7 +326,6 @@
            "app.openshift.io/name": "postgresql"
         },
         "labels":{
-            "app.openshift.io/name": "postgresql",
             "app.openshift.io/component": "database",
             "app.openshift.io/runtime": "postgresql"
         }
