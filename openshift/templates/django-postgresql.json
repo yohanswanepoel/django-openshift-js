@@ -165,7 +165,7 @@
         "annotations": {
           "description": "Defines how to deploy the application server",
           "template.alpha.openshift.io/wait-for-ready": "true",
-          "app.openshift.io/connects-to": "${DATABASE_SERVICE_NAME}",
+          "app.openshift.io/connects-to": "${DATABASE_SERVICE_NAME}"
         },
         "labels":{
             "app.openshift.io/component": "frontend",
