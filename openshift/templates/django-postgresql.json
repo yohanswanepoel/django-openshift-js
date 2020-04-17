@@ -319,14 +319,7 @@
       "apiVersion": "v1",
       "metadata": {
         "name": "${DATABASE_SERVICE_NAME}",
-        "annotations": {
-          "description": "Defines how to deploy the database",
-          "template.alpha.openshift.io/wait-for-ready": "true"
-        },
-        "labels":{
-            "app.openshift.io/component": "database",
-            "app.openshift.io/runtime": "postgresql"
-        }
+        
       },
       "spec": {
         "strategy": {
