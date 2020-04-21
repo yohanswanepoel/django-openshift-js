@@ -100,6 +100,9 @@ Grab the Generic Webhook secret URLs
 
 To kick off a build run 
 ```bash
+#x86
+curl -X POST -k <generic webhook url with secret>
+#System Z
 curl -X POST -k <generic webhook url with secret>
 ```
 
