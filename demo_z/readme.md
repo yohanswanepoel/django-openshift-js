@@ -73,13 +73,32 @@ oc get templates
 ## Spin up instance of app
 Congratualations! If everything worked up to now, then we are ready to spin up the app. 
 
+I recommend you do this before the demo, you can blow it all away and run it again. Just keep the image streams as that is then cached.
 
+This should be as simple as processing your template
+```bash
+oc process django-psql-no-persist-johan | oc create -f -
+```
+
+You may need to add the route server to /etc/hosts - I will leave that one up to you to figure out
 
 ## Demonstrator
 Webhook
 Steps
 
 ## Clean up
+I am leaving my initial image streams on purpose. 
+
+```bash
+oc delete secret django-psql-example
+oc delete service django-psql-example
+oc delete route django-psql-example
+oc delete is django-psql-example
+oc delete bc django-psql-example
+oc delete dc django-psql-example
+oc delete service postgresql
+oc delete dc postgresql
+```
 
 ## Tips
 pull images before demonstration

@@ -2,7 +2,7 @@
   "kind": "Template",
   "apiVersion": "v1",
   "metadata": {
-    "name": "django-psql-no-persist-johan",
+    "name": "django-psql-no-persist-demo",
     "annotations": {
       "openshift.io/display-name": "Django + PostgreSQL (Ephemeral) sample JS",
       "description": "This template pulls everything from the local namespace. Container based on sample using cookie cutter project, see https://github.com/openshift/django-ex/blob/master/README.md.",
