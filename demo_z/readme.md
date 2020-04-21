@@ -48,11 +48,12 @@ The assumption here is that you cannot access the images in the openshift namesp
 Download the imagestream and template files (or clone the repo). Then create the image streams and lastly the template
 ```bash
 wget https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/master/openshift/templates/imagestream-python.json
-wget https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/master/openshift/templates/imagestream-postgresql.json
-wget https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/master/openshift/templates/django-postgresql-namespace.json
-
 oc create -f imagestream-python.json
+
+wget https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/master/openshift/templates/imagestream-postgresql.json
 oc create -f imagestream-postgresql.json
+
+wget https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/master/openshift/templates/django-postgresql-namespace.json
 oc create -f django-postgresql-namespace.json
 
 # Verify image stream creation worked
@@ -77,7 +78,7 @@ I recommend you do this before the demo, you can blow it all away and run it aga
 
 This should be as simple as processing your template
 ```bash
-oc process django-psql-no-persist-johan | oc create -f -
+oc process django-psql-no-persist-demo | oc create -f -
 ```
 
 You may need to add the route server to /etc/hosts - I will leave that one up to you to figure out
@@ -98,6 +99,7 @@ oc delete bc django-psql-example
 oc delete dc django-psql-example
 oc delete service postgresql
 oc delete dc postgresql
+oc delete template django-psql-no-persist-demo
 ```
 
 ## Tips

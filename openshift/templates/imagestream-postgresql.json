@@ -19,7 +19,7 @@
                 },
                 "from": {
                     "kind": "ImageStreamTag",
-                    "name": "registry.redhat.io/rhel8/postgresql-12:latest"
+                    "name": "12"
                 },
                 "name": "latest",
                 "referencePolicy": {
@@ -73,7 +73,7 @@
                 },
                 "from": {
                     "kind": "DockerImage",
-                    "name": "registry.redhat.io/rhscl/postgresql-12-rhel7:latest"
+                    "name": "registry.redhat.io/rhel8/postgresql-12:latest"
                 },
                 "name": "12",
                 "referencePolicy": {
