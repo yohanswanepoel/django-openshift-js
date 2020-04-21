@@ -132,4 +132,4 @@ oc delete template django-psql-no-persist-demo
 ```
 
 ## Tips
-pull images before demonstration
+* pull images before demonstration
