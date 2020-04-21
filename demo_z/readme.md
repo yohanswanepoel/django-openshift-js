@@ -103,6 +103,13 @@ To kick off a build run
 curl -X POST -k <generic webhook url with secret>
 ```
 
+My suggestion for the demonstration:
+* Show how the platforms are similar and how developers/adminstrators have a consistent experience
+* Show the app running on all the platforms = the app UI will show x86 or s390 depending on platform. 
+* Show how easy it is to consume using the template you uploaded from the Catalogue
+* Make a code change in the [base.html](../myaccounts/templates/base.html) change the text in the first Div in the body, commit and push to git
+* Use the webhooks to kick off both source to image builds, you can show those running on both
+* Show both apps now changed from a single source repo - this is the magic bit
 
 Webhooks
 
