@@ -92,8 +92,19 @@ oc get routes | grep django | awk 'http\://{print $2}'
 You may need to add the route server to /etc/hosts - I will leave that one up to you to figure out
 
 ## Demonstrator
-Webhook
-Steps
+The demonstration is more effective using two or more environments on different platforms. Basically to demonstrate it you need to do the following:
+
+Grab the Generic Webhook secret URLs 
+* Navigate to OpenShift Developer Console / <your project> / Builds / <your build> 
+* Under the Webhooks section, next to the Generic Webhook click on the Copy URL with secret
+
+To kick off a build run 
+```bash
+curl -X POST -k <generic webhook url with secret>
+```
+
+
+Webhooks
 
 ## Clean up
 I am leaving my initial image streams on purpose. 
