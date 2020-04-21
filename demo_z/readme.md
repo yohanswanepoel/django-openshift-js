@@ -3,6 +3,8 @@
 This demonstrator should work on x86, Power and Z architectures. There are some specific setup procedures that I needed to complete.
 
 ## Pre-Requisites
+* Clone the repository - if you want to show code changes flowing through in the demo (highly recommeded)
+* Two or more environments (x86, Power, Z) if you want to show it across architectures.
 * Ability to pull images form Red Hat for multiplatform use cases.
 * VSCode, Theia or CRC to do code change
 * Git Access
@@ -78,7 +80,13 @@ I recommend you do this before the demo, you can blow it all away and run it aga
 
 This should be as simple as processing your template
 ```bash
-oc process django-psql-no-persist-demo | oc create -f -
+oc process django-psql-no-persist-demo -P SOURCE_REPOSITORY_URL=<your git repo> | oc create -f -
+
+## check progress with oc get pods
+
+
+## get your app url
+oc get routes | grep django | awk 'http\://{print $2}'
 ```
 
 You may need to add the route server to /etc/hosts - I will leave that one up to you to figure out
