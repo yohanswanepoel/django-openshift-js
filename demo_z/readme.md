@@ -3,7 +3,7 @@
 This demonstrator should work on x86, Power and Z architectures. There are some specific setup procedures that I needed to complete.
 
 ## Pre-Requisites
-* Clone the repository - if you want to show code changes flowing through in the demo (highly recommeded)
+* Fork the repository - if you want to show code changes flowing through in the demo (highly recommeded)
 * Two or more environments (x86, Power, Z) if you want to show it across architectures.
 * Ability to pull images form Red Hat for multiplatform use cases.
 * VSCode, Theia or CRC to do code change
