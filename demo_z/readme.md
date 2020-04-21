@@ -25,9 +25,9 @@ oc project <your project>
 
 oc create secret docker-registry demopullsecret \
     --docker-server=registry.redhat.io \
-    --docker-username=<user_name> \
-    --docker-password=<password> \
-    --docker-email=<email>
+    --docker-username='<user_name>' \
+    --docker-password='<password>' \
+    --docker-email='<email>'
 
 ## Useful for debugging
 oc get secret demopullsecret --output="jsonpath={.data.\.dockerconfigjson}" | base64 --decode
@@ -45,10 +45,34 @@ You should now be able to pull the following images:
 ## Setup Image streams - if they are not in the openshift namespace
 The assumption here is that you cannot access the images in the openshift namespace and that they are not there.
 
+Download the imagestream and template files (or clone the repo). Then create the image streams and lastly the template
+```bash
+wget https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/master/openshift/templates/imagestream-python.json
+wget https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/master/openshift/templates/imagestream-postgresql.json
+wget https://raw.githubusercontent.com/yohanswanepoel/django-openshift-js/master/openshift/templates/django-postgresql-namespace.json
 
+oc create -f imagestream-python.json
+oc create -f imagestream-postgresql.json
+oc create -f django-postgresql-namespace.json
 
+# Verify image stream creation worked
+oc get is
+## Output
+# NAME         IMAGE REPOSITORY                                                       TAGS               UPDATED
+# postgresql   image-registry.openshift-image-registry.svc:5000/project1/postgresql   10,12,9.6,latest   9 minutes ago
+# python       image-registry.openshift-image-registry.svc:5000/project1/python       2.7,3.6,latest     About a minute ago
 
-## Setup Template
+# Verify template creation worked
+oc get templates
+## Output
+# NAME                           DESCRIPTION                                                                        PARAMETERS     OBJECTS
+# django-psql-no-persist-johan   This template pulls everything from the local namespace. Container based on s...   19 (6 blank)   8
+
+```
+
+## Spin up instance of app
+Congratualations! If everything worked up to now, then we are ready to spin up the app. 
+
 
 
 ## Demonstrator
