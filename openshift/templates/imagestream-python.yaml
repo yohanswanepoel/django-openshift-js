@@ -6,7 +6,6 @@ metadata:
   name: python
   uid: 6e8163dc-fd7d-4f15-bc5a-7d6740b2e340
   generation: 2
-  namespace: openshift
   labels:
     samples.operator.openshift.io/managed: 'true'
 spec:
