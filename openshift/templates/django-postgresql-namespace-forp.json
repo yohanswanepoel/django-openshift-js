@@ -274,8 +274,12 @@
                   }
                 ],
                 "resources": {
+                  "requests": {
+                    "ephemeral-storage": "${EPHEMERAL_REQUEST}"
+                  },
                   "limits": {
-                    "memory": "${MEMORY_LIMIT}"
+                    "memory": "${MEMORY_LIMIT}",
+                    "ephemeral-storage": "${EPHEMERAL_LIMIT}"
                   }
                 }
               }
@@ -440,6 +444,20 @@
       "required": true,
       "description": "Maximum amount of memory the Django container can use.",
       "value": "256Mi"
+    },
+    {
+      "name": "EPHEMERAL_REQUEST",
+      "displayName": "Ephemeral Storage Request",
+      "required": true,
+      "description": "Maximum amount of Ephemeral Storage the Django container can use.",
+      "value": "0Mi"
+    },
+    {
+      "name": "EPHEMERAL_LIMIT",
+      "displayName": "Ephemeral Storage Limit",
+      "required": true,
+      "description": "Maximum amount of Ephemeral Storage the Django container can use.",
+      "value": "0Mi"
     },
     {
       "name": "MEMORY_POSTGRESQL_LIMIT",
