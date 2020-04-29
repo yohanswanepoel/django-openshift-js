@@ -450,14 +450,14 @@
       "displayName": "Ephemeral Storage Request",
       "required": true,
       "description": "Maximum amount of Ephemeral Storage the Django container can use.",
-      "value": "0Mi"
+      "value": "128Mi"
     },
     {
       "name": "EPHEMERAL_LIMIT",
       "displayName": "Ephemeral Storage Limit",
       "required": true,
       "description": "Maximum amount of Ephemeral Storage the Django container can use.",
-      "value": "0Mi"
+      "value": "128Mi"
     },
     {
       "name": "MEMORY_POSTGRESQL_LIMIT",
