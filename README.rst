@@ -1,6 +1,8 @@
 myaccounts
 ==========
 
+There are some good examples of running this on Z
+
 A system of engagement for account management using django, vue, bootstrap ect
 
 .. image:: https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg
