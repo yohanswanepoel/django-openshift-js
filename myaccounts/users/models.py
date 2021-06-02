@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.urls import reverse
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
+from six import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -20,4 +20,4 @@ class User(AbstractUser):
 
 class Preferences(models.Model):
     notifications = models.BooleanField(default=False)
-    user = models.ForeignKey(User, on_delete=None, null=False, verbose_name=_("Owner"), related_name='%(class)s_owner')
+    user = models.ForeignKey(User, on_delete=models.PROTECT, null=False, verbose_name=_("Owner"), related_name='%(class)s_owner')

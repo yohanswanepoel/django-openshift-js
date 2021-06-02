@@ -8,7 +8,12 @@
 
 {% block inner %}
 
-<h1>{% trans "Sign In" %}</h1>
+<section class="pf-c-page__main-section pf-m-light">
+  <div class="pf-c-content">
+    <h1>{% trans "Sign In" %}</h1>
+  </div>
+</section>
+
 
 {% get_providers as socialaccount_providers %}
 
@@ -34,14 +39,16 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
 {% endif %}
 
-<form class="login" method="POST" action="{% url 'account_login' %}">
+<form class="pf-c-form" method="POST" action="{% url 'account_login' %}">
   {% csrf_token %}
-  {{ form|crispy }}
+  <div class="pf-c-form__control_group">
+    {{ form|crispy }}
+  </div>
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-  <button class="primaryAction btn btn-primary" type="submit">{% trans "Sign In" %}</button>
+  <a class="pf-c-button" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+  <button class="pf-c-button pf-m-primary" type="submit">{% trans "Sign In" %}</button>
 </form>
 
 {% endblock %}

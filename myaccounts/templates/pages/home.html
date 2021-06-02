@@ -4,35 +4,60 @@
 
 
 {% block content %}
-  <div class="card-columns">
-    <div class="card bg-light" style="padding:20px">
-      <div class="card-body">
-        <h4 class="card-title">Machine</h4>
-        <p class="card-text">{{ machine }}</p>
+  <div class="pf-l-gallery pf-m-gutter">
+    <div class="pf-c-card pf-m-hoverable pf-m-compact" style="padding:20px">
+      <div class="pf-c-card__title">
+        <p id="card-1-check-label">Machine</p>
+        <div class="pf-c-content">
+          <small>CPU Type</small>
+        </div>
+      </div>
+      <div class="pf-c-card__body">
+        {{ machine }}
       </div>
     </div>
-    <div class="card" style="padding:20px">
-      <div class="card-body">
-        <h4 class="card-title">Node</h4>
-        <p class="card-text">{{ node }}</p>
+    <div class="pf-c-card pf-m-hoverable pf-m-compact" style="padding:20px">
+      <div class="pf-c-card__title">
+        <p id="card-1-check-label">Node</p>
+        <div class="pf-c-content">
+          <small>OS Flavour</small>
+        </div>
+      </div>
+      <div class="pf-c-card__body">
+        {{ node }}
       </div>
     </div>
-    <div class="card" style="padding:20px">
-      <div class="card-body">
-        <h4 class="card-title">System</h4>
-        <p class="card-text">{{ system }}</p>
+    <div class="pf-c-card pf-m-hoverable pf-m-compact" style="padding:20px">
+      <div class="pf-c-card__title">
+        <p id="card-1-check-label">Operating System</p>
+        <div class="pf-c-content">
+          <small>OS</small>
+        </div>
+      </div>
+      <div class="pf-c-card__body">
+        {{ system }}
       </div>
     </div>
-    <div class="card" style="padding:20px">
-      <div class="card-body">
-        <h4 class="card-title">Release</h4>
-        <p class="card-text">{{ release }}</p>
+    <div class="pf-c-card pf-m-hoverable pf-m-compact" style="padding:20px">
+      <div class="pf-c-card__title">
+        <p id="card-1-check-label">Kernel</p>
+        <div class="pf-c-content">
+          <small>Release</small>
+        </div>
+      </div>
+      <div class="pf-c-card__body">
+        {{ release }}
       </div>
     </div>
-    <div class="card" style="padding:20px">
-      <div class="card-body">
-        <h4 class="card-title">Platform</h4>
-        <p class="card-text">{{ platform }}</p>
+    <div class="pf-c-card pf-m-hoverable pf-m-compact" style="padding:20px">
+      <div class="pf-c-card__title">
+        <p id="card-1-check-label">Platform</p>
+        <div class="pf-c-content">
+          <small>Details</small>
+        </div>
+      </div>
+      <div class="pf-c-card__body">
+        {{ platform }}
       </div>
     </div>
 </div>

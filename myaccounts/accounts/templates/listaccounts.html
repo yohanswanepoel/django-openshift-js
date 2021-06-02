@@ -1,73 +1,83 @@
 {% extends "base.html" %}
 {% load static i18n %}
 
+{% block sidebar %}
+      <div class="pf-c-page__sidebar" id="page-sidebar">
+        <div class="pf-c-page__sidebar-body">
+          <div class="pf-c-panel">
+            <div class="pf-c-panel-body">
+              <nav class="pf-c-nav">
+                <ul class="pf-c-nav__list">
+                  <li class="pf-c-nav__item">
+                    <a class="pf-c-nav__link pf-m-current" href="#">Summary<span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="pf-c-nav__item">
+                    <a class="pf-c-nav__link" href="{% url 'myaccounts:home' %}"> Accounts</a>
+                  </li>
+                  <li class="pf-c-nav__item">
+                    <a class="pf-c-nav__link" href="#">Transfer/Pay</a>
+                  </li>
+                  <li class="pf-c-nav__item">
+                    <a class="pf-c-nav__link" href="#">Reports</a>
+                  </li>
+                  <li class="pf-c-nav__item">
+                    <a class="pf-c-nav__link" href="#">New Applications</a>
+                  </li>
+                  <li class="pf-c-nav__item">
+                    <a class="pf-c-nav__link" href="#">Notifications</a>
+                  </li>
+                </ul>
 
+
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock sidebar %}
 
 {% block content %}
-
-
-
-
-      <div id="app"  class="row">
-        <nav class="col-md-2 hidden-xs-down bg-faded sidebar">
-          <ul class="nav nav-pills flex-column">
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Summary<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'myaccounts:home' %}"> Accounts</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Transfer/Pay</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Reports</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">New Applications</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Notifications</a>
-            </li>
-          </ul>
-
-
-        </nav>
-
-        <main class="col-md-10 pt-3">
+      
+      <div id="app" >
+        
+        <main class="pf-c-page__main">
           <h1>Dashboard</h1>
-            <button v-on:click="changeValue" class="btn">Changes</button>
-      <button v-on:click="resetValue" class="btn">Reset</button>
-      <button v-on:click="addToList" class="btn">Add Item</button>
-      <button v-on:click="removeItem" class="btn">Remove Item</button>
-      <br>
-      Some More stuff
-      [[ message ]]
-      <br>
-      <input type="text" v-model="input"></input>
-      <input type="text" v-model="message"></input>
-      <ul class="list-group">
-         <li v-for="gl in groceryList" class="list-group-item list-group-item-action">
-          [[ gl.text ]]
-        </li>
-      </ul>
-      <table class="table table-striped table-hover table-bordered">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="table-info" v-for="gl in groceryList">
-            <td>[[ gl.id ]]</td>
-            <td>[[ gl.text ]]</td>
-          </tr>
-        </tbody>
-      </table>
-
-        </main>
+          <section class="pf-c-page__main-section pf-m-horizontal">
+            <button v-on:click="changeValue" class="pf-c-button pf-m-primary">Changes</button>
+            <button v-on:click="resetValue" class="pf-c-button pf-m-primary">Reset</button>
+            <button v-on:click="addToList" class="pf-c-button pf-m-primary">Add Item</button>
+            <button v-on:click="removeItem" class="pf-c-button pf-m-primary">Remove Item</button>
+        </section>
+        <br>
+        <section class="pf-c-page__main-section">
+            Some More stuff
+            [[ message ]]
+            <br>
+            <input type="text" v-model="input"></input>
+            <input type="text" v-model="message"></input>
+            <ul class="list-group">
+              <li v-for="gl in groceryList" class="list-group-item list-group-item-action">
+                [[ gl.text ]]
+              </li>
+            </ul>
+            <table class="table table-striped table-hover table-bordered">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-info" v-for="gl in groceryList">
+                  <td>[[ gl.id ]]</td>
+                  <td>[[ gl.text ]]</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          </main>
       </div>
+      
 {% endblock content %}
 
 {% block custom_javascript %}
