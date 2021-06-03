@@ -8,12 +8,13 @@
 
 {% block inner %}
 
-<section class="pf-c-page__main-section pf-m-light">
+<section class="pf-c-page__main-section pf-m-light pf-u-text-align-center">
   <div class="pf-c-content">
     <h1>{% trans "Sign In" %}</h1>
   </div>
 </section>
 
+<section class="pf-c-page__main-section pf-m-light pf-u-text-align-center">
 
 {% get_providers as socialaccount_providers %}
 
@@ -41,7 +42,7 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
 <form class="pf-c-form" method="POST" action="{% url 'account_login' %}">
   {% csrf_token %}
-  <div class="pf-c-form__control_group">
+  <div class="pf-c-form__control_group pf-u-text-align-center">
     {{ form|crispy }}
   </div>
   {% if redirect_field_value %}
@@ -50,6 +51,8 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
   <a class="pf-c-button" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
   <button class="pf-c-button pf-m-primary" type="submit">{% trans "Sign In" %}</button>
 </form>
+</section>
+
 
 {% endblock %}
 
