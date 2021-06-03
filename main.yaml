@@ -1,0 +1,115 @@
+---
+- name: Setup application
+  hosts: localhost
+  vars:
+    db_container: django-db
+    portal_container: portal_django
+
+  tasks:
+
+    - name: Include variables
+      include_vars:
+        file: variables.yaml
+      
+      tags:
+        - import_vars
+
+    - name: Start db container
+      containers.podman.podman_container:
+        name: "{{ db_container }}"
+        image: registry.access.redhat.com/rhel8/postgresql-12
+        state: started
+        restart: yes
+        ports:
+          - "5432:5432"
+        env:
+          POSTGRESQL_USER="{{ postgres_admin_user }}"
+          POSTGRESQL_PASSWORD="{{ postgres_admin_password }}"
+          POSTGRESQL_DATABASE="{{ db_name }}"
+
+      tags:
+        - start_db
+        - start_all
+
+    - name: Stop db container
+      containers.podman.podman_container:
+        name: "{{ db_container }}"
+        state: stopped
+      
+      tags:
+        - stop_couch
+        - stop_all
+        - clean
+    
+    - name: Remove db container
+      containers.podman.podman_container:
+        name: "{{ db_container }}"
+        state: absent
+      
+      tags:
+        - remove_couch
+        - clean
+    
+    - name: Stop frontend container
+      containers.podman.podman_container:
+        name: "{{ portal_container }}"
+        state: stopped
+      
+      tags:
+        - stop_portal
+        - rebuild_portal
+        - stop_all
+        - clean
+
+    - name: Remove frontend container
+      containers.podman.podman_container:
+        name: "{{ portal_container }}"
+        state: absent
+      
+      tags:
+        - remove_portal 
+        - rebuild_portal
+        - restart_portal
+        - clean
+
+    - name: Remove web app container
+      podman_image:
+        name: localhost/portal_django
+        state: absent
+
+      tags:
+        - remove_portal_image
+        - clean
+        - rebuild_portal
+
+    - name: Build web app container
+      podman_image:
+        name: portal_django
+        path: ./
+        build:
+          format: docker
+      
+      tags:
+        - build_portal_image
+        - rebuild_portal
+
+    - name: Create/start frontend container
+      containers.podman.podman_container:
+        name: "{{ portal_container }}"
+        image: localhost/portal_django
+        state: started
+        restart: yes
+        ports:
+          - "8000:8000"
+        env:
+          DATABASE_USER="{{ postgres_admin_user }}"
+          DATABASE_PASSWORD="{{ postgres_admin_password }}"
+          DATABASE_ENGINE="{{ postgresql }}"
+          DATABASE_NAME="{{ db_name }}"
+          DATABASE_SERVICE_NAME="{{ host_ip }}"
+
+      tags:
+        - rebuild_portal
+        - restart_portal
+        - start_portal
+        - start_all

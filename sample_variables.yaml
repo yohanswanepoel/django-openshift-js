@@ -1,0 +1,5 @@
+host_ip: xxx.xxx.xxx.xxx
+postgres_admin_user: yourdbadminuser
+postgres_admin_password: yourdbadminpassword
+postgress_data_volume: /home/somwhere/data
+db_name: djangodb
